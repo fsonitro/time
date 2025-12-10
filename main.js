@@ -50,7 +50,7 @@ if (app.dock) {
 
 function createDropdownWindow() {
   dropdownWindow = new BrowserWindow({
-    width: 300,
+    width: 260,
     height: 600,
     maxHeight: 600,
     show: false,
@@ -60,8 +60,10 @@ function createDropdownWindow() {
     alwaysOnTop: true,
     skipTaskbar: true,
     transparent: true,
+    hasShadow: true,
     vibrancy: 'menu',
     visualEffectState: 'active',
+    roundedCorners: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -173,8 +175,8 @@ function positionDropdownWindow() {
   const windowBounds = dropdownWindow.getBounds();
   const display = screen.getDisplayMatching(trayBounds);
 
-  // Calculate x position (centered under tray icon)
-  let x = Math.round(trayBounds.x + trayBounds.width / 2 - windowBounds.width / 2);
+  // Calculate x position (left-aligned to tray icon)
+  let x = trayBounds.x;
 
   // Ensure window stays within screen bounds
   if (x < display.bounds.x) {
