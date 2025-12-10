@@ -76,15 +76,19 @@ function createLocationItem(location, isFavourite) {
   }
   
   const isMenuBarItem = location.id === menuBarLocationId;
+  const { time, date } = location.currentTime;
   
   item.innerHTML = `
     <div class="location-left">
       <span class="favourite-indicator">${isFavourite ? '★' : ''}</span>
-      <span class="location-name">${location.label}</span>
+      <div class="location-info">
+        <span class="location-name">${location.label}</span>
+        ${date ? `<span class="location-date">${date}</span>` : ''}
+      </div>
       ${isMenuBarItem ? '<span class="menu-bar-indicator">● Menu Bar</span>' : ''}
     </div>
     <div class="location-right">
-      <span class="location-time">${location.currentTime}</span>
+      <span class="location-time">${time}</span>
       <span class="timezone-offset">${getTimezoneOffset(location.timezone)}</span>
     </div>
   `;

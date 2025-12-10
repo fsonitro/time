@@ -104,12 +104,24 @@ body {
   flex-shrink: 0;
 }
 
+.location-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .location-name {
   font-weight: 500;
   color: #1d1d1f;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.location-date {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
 }
 
 .menu-bar-indicator {
@@ -218,6 +230,10 @@ body.dark-mode .location-item.active {
 
 body.dark-mode .location-name {
   color: #f5f5f7;
+}
+
+body.dark-mode .location-date {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 body.dark-mode .location-time {

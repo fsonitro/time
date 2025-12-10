@@ -113,7 +113,9 @@ function createSettingsWindow() {
 }
 
 function getTimeForTimezone(timezone, preferences) {
-  const options = {
+  const now = new Date();
+  
+  const timeOptions = {
     timeZone: timezone,
     hour: '2-digit',
     minute: '2-digit',
@@ -121,10 +123,23 @@ function getTimeForTimezone(timezone, preferences) {
   };
 
   if (preferences.showSeconds) {
-    options.second = '2-digit';
+    timeOptions.second = '2-digit';
   }
 
-  return new Intl.DateTimeFormat('en-GB', options).format(new Date());
+  const time = new Intl.DateTimeFormat('en-GB', timeOptions).format(now);
+  
+  if (preferences.showDate) {
+    const dateOptions = {
+      timeZone: timezone,
+      weekday: 'short',
+      day: 'numeric',
+      month: 'short'
+    };
+    const date = new Intl.DateTimeFormat('en-GB', dateOptions).format(now).replace(',', '');
+    return { time, date };
+  }
+  
+  return { time, date: null };
 }
 
 function getMenuBarTitle() {
@@ -136,7 +151,11 @@ function getMenuBarTitle() {
   
   if (!location) return 'World Clock';
 
-  const time = getTimeForTimezone(location.timezone, preferences);
+  const { time, date } = getTimeForTimezone(location.timezone, preferences);
+  
+  if (date) {
+    return `${location.label} ${date} ${time}`;
+  }
   return `${location.label} ${time}`;
 }
 
