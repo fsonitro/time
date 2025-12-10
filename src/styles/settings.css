@@ -1,0 +1,656 @@
+/* World Clock - Settings Page Styles */
+/* macOS Native Design */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f5f5f5;
+  color: #1d1d1f;
+}
+
+.settings-container {
+  padding: 0 24px 24px;
+}
+
+/* Title Bar Spacer (for hiddenInset style) */
+.title-bar-spacer {
+  height: 52px;
+  -webkit-app-region: drag;
+}
+
+/* Header */
+.settings-header {
+  margin-bottom: 24px;
+}
+
+.settings-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1d1d1f;
+}
+
+/* Sections */
+.settings-section {
+  margin-bottom: 24px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.section-header .section-title {
+  margin-bottom: 0;
+}
+
+/* Cards */
+.settings-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Setting Rows */
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.setting-row:last-child {
+  border-bottom: none;
+}
+
+.setting-info {
+  flex: 1;
+}
+
+.setting-label {
+  font-weight: 500;
+  color: #1d1d1f;
+}
+
+.setting-description {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 2px;
+}
+
+/* Select Control */
+.select-control {
+  appearance: none;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 28px 6px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  color: #1d1d1f;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M3 4.5L6 7.5L9 4.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+.select-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+}
+
+/* Toggle Switch */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 22px;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.15);
+  transition: 0.2s;
+  border-radius: 22px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.2s;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toggle input:checked + .toggle-slider {
+  background-color: #34C759;
+}
+
+.toggle input:checked + .toggle-slider:before {
+  transform: translateX(16px);
+}
+
+.toggle input:focus + .toggle-slider {
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+}
+
+/* Add Button */
+.add-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #007AFF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.add-btn:hover {
+  background: #0066D6;
+}
+
+.add-btn span {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* Locations Card */
+.locations-card {
+  max-height: 350px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.locations-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+
+.locations-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.locations-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.locations-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Location Settings Item */
+.location-settings-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  margin: 2px 8px;
+  border-radius: 6px;
+  transition: background-color 0.1s;
+}
+
+.location-settings-item:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.location-settings-item.dragging {
+  opacity: 0.5;
+  background: rgba(0, 122, 255, 0.1);
+}
+
+.location-settings-item.drag-over-top {
+  border-top: 2px solid #007AFF;
+}
+
+.location-settings-item.drag-over-bottom {
+  border-bottom: 2px solid #007AFF;
+}
+
+.drag-handle {
+  cursor: grab;
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 12px;
+  padding: 4px;
+  margin-right: 4px;
+  letter-spacing: -2px;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.favourite-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.15s;
+}
+
+.favourite-btn:hover {
+  color: #FF9500;
+}
+
+.favourite-btn.active {
+  color: #FF9500;
+}
+
+.location-details {
+  flex: 1;
+  min-width: 0;
+  margin-left: 8px;
+}
+
+.location-details .location-name {
+  font-weight: 500;
+  color: #1d1d1f;
+  display: block;
+}
+
+.location-details .location-timezone {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.4);
+  display: block;
+  margin-top: 1px;
+}
+
+.location-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.location-settings-item:hover .location-actions {
+  opacity: 1;
+}
+
+.location-actions button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.1s, color 0.1s;
+}
+
+.location-actions button:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #1d1d1f;
+}
+
+.location-actions .delete-btn:hover {
+  background: rgba(255, 59, 48, 0.1);
+  color: #FF3B30;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 1000;
+}
+
+.modal-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: #f5f5f5;
+  border-radius: 12px;
+  width: 420px;
+  max-height: 500px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.95);
+  transition: transform 0.2s;
+}
+
+.modal-overlay.visible .modal {
+  transform: scale(1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.modal-header h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.1s;
+}
+
+.modal-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.modal-body {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Search Input */
+.search-input {
+  margin: 16px 20px 12px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.08);
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+}
+
+.search-input::placeholder {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+/* Timezone List */
+.timezone-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 12px 12px;
+}
+
+.timezone-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.timezone-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.timezone-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.timezone-region-header {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px 8px 6px;
+  position: sticky;
+  top: 0;
+  background: #f5f5f5;
+}
+
+.timezone-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  margin: 2px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.timezone-item:hover:not(.added) {
+  background: rgba(0, 122, 255, 0.1);
+}
+
+.timezone-item.added {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.timezone-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.timezone-label {
+  font-weight: 500;
+  color: #1d1d1f;
+  display: block;
+}
+
+.timezone-id {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.4);
+  display: block;
+  margin-top: 1px;
+}
+
+.timezone-preview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timezone-time {
+  font-size: 14px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: #1d1d1f;
+}
+
+.added-badge {
+  font-size: 10px;
+  color: #34C759;
+  background: rgba(52, 199, 89, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: #1e1e1e;
+  color: #f5f5f7;
+}
+
+body.dark-mode .settings-header h1 {
+  color: #f5f5f7;
+}
+
+body.dark-mode .section-title {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .settings-card {
+  background: #2d2d2d;
+  box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .setting-row {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .setting-label {
+  color: #f5f5f7;
+}
+
+body.dark-mode .select-control {
+  background: #3d3d3d;
+  color: #f5f5f7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M3 4.5L6 7.5L9 4.5'/%3E%3C/svg%3E");
+}
+
+body.dark-mode .toggle-slider {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .empty-state {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .location-settings-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .drag-handle {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+body.dark-mode .favourite-btn {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+body.dark-mode .location-details .location-name {
+  color: #f5f5f7;
+}
+
+body.dark-mode .location-details .location-timezone {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .location-actions button {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .location-actions button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f5f5f7;
+}
+
+body.dark-mode .location-actions .delete-btn:hover {
+  background: rgba(255, 69, 58, 0.15);
+  color: #FF453A;
+}
+
+body.dark-mode .modal {
+  background: #2d2d2d;
+}
+
+body.dark-mode .modal-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .modal-close {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .search-input {
+  background: #3d3d3d;
+  color: #f5f5f7;
+  box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .search-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+body.dark-mode .timezone-region-header {
+  color: rgba(255, 255, 255, 0.5);
+  background: #2d2d2d;
+}
+
+body.dark-mode .timezone-item:hover:not(.added) {
+  background: rgba(10, 132, 255, 0.2);
+}
+
+body.dark-mode .timezone-label {
+  color: #f5f5f7;
+}
+
+body.dark-mode .timezone-id {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .timezone-time {
+  color: #f5f5f7;
+}
+
+body.dark-mode .locations-list::-webkit-scrollbar-thumb,
+body.dark-mode .timezone-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}

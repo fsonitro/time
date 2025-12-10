@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <title>World Clock Settings</title>
+  <link rel="stylesheet" href="styles/settings.css">
+</head>
+<body>
+  <div class="settings-container">
+    <!-- Title Bar Spacer (for hidden inset title bar) -->
+    <div class="title-bar-spacer"></div>
+
+    <!-- Header -->
+    <div class="settings-header">
+      <h1>Settings</h1>
+    </div>
+
+    <!-- Display Preferences Section -->
+    <section class="settings-section">
+      <h2 class="section-title">Display</h2>
+      <div class="settings-card">
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Time Format</span>
+          </div>
+          <div class="setting-control">
+            <select id="timeFormat" class="select-control">
+              <option value="24h">24-hour</option>
+              <option value="12h">12-hour</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Show Seconds</span>
+          </div>
+          <div class="setting-control">
+            <label class="toggle">
+              <input type="checkbox" id="showSeconds">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Show Date</span>
+          </div>
+          <div class="setting-control">
+            <label class="toggle">
+              <input type="checkbox" id="showDate">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section class="settings-section">
+      <div class="section-header">
+        <h2 class="section-title">Locations</h2>
+        <button class="add-btn" id="addLocationBtn">
+          <span>+</span> Add Location
+        </button>
+      </div>
+      
+      <div class="settings-card locations-card">
+        <div class="locations-list" id="locationsList">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Add Location Modal -->
+  <div class="modal-overlay" id="addLocationModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Add Location</h2>
+        <button class="modal-close" id="closeModalBtn">✕</button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="search-input" id="timezoneSearch" placeholder="Search cities or time zones...">
+        <div class="timezone-list" id="timezoneList">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer/timezones.js"></script>
+  <script src="renderer/settings.js"></script>
+</body>
+</html>

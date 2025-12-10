@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <title>World Clock</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div class="dropdown-container">
+    <!-- Header -->
+    <div class="dropdown-header">
+      <span class="header-title">World Clock</span>
+    </div>
+
+    <!-- Locations List -->
+    <div class="locations-list" id="locationsList">
+      <!-- Dynamically populated -->
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Footer Actions -->
+    <div class="footer-actions">
+      <button class="footer-btn" id="settingsBtn">
+        <span class="icon">⚙️</span>
+        <span>Settings...</span>
+      </button>
+      <button class="footer-btn footer-btn-quit" id="quitBtn">
+        <span class="icon">✕</span>
+        <span>Quit World Clock</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="renderer/dropdown.js"></script>
+</body>
+</html>
