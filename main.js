@@ -91,6 +91,7 @@ function createSettingsWindow() {
     minWidth: 450,
     minHeight: 500,
     show: false,
+    backgroundColor: '#00000000',
     titleBarStyle: 'hiddenInset',
     vibrancy: 'window',
     visualEffectState: 'active',

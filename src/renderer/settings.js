@@ -15,6 +15,9 @@ async function init() {
   // Check initial theme
   const isDark = await window.electronAPI.getDarkMode();
   handleThemeChange(isDark);
+  
+  // Show content after everything is loaded
+  document.body.classList.add('ready');
 }
 
 async function loadPreferences() {

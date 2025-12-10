@@ -7,14 +7,24 @@
   box-sizing: border-box;
 }
 
+html {
+  background: transparent;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
   font-size: 13px;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f5f5f5;
+  background: transparent;
   color: #1d1d1f;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+body.ready {
+  opacity: 1;
 }
 
 .settings-container {
@@ -467,6 +477,10 @@ body {
   position: sticky;
   top: 0;
   background: #f5f5f5;
+  z-index: 10;
+  margin: 0 -12px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .timezone-item {
@@ -530,7 +544,7 @@ body {
 
 /* Dark Mode */
 body.dark-mode {
-  background: #1e1e1e;
+  background: transparent;
   color: #f5f5f7;
 }
 
