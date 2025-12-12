@@ -42,6 +42,7 @@ let tray = null;
 let dropdownWindow = null;
 let settingsWindow = null;
 let updateInterval = null;
+let dropdownVisibleTimeout = null;
 
 // Hide dock icon (tray-only app)
 if (app.dock) {
@@ -77,7 +78,21 @@ function createDropdownWindow() {
   dropdownWindow.on('blur', () => {
     if (dropdownWindow && !settingsWindow?.isFocused()) {
       dropdownWindow.hide();
+      if (dropdownVisibleTimeout) {
+        clearInterval(dropdownVisibleTimeout);
+        dropdownVisibleTimeout = null;
+      }
     }
+  });
+
+  // Close dropdown when window is shown (to handle tray clicks)
+  dropdownWindow.on('show', () => {
+    // After a short delay, if focus moves away, hide the dropdown
+    setTimeout(() => {
+      if (dropdownWindow && !dropdownWindow.isFocused()) {
+        dropdownWindow.hide();
+      }
+    }, 200);
   });
 }
 
@@ -196,10 +211,30 @@ function toggleDropdown() {
 
   if (dropdownWindow.isVisible()) {
     dropdownWindow.hide();
+    if (dropdownVisibleTimeout) {
+      clearTimeout(dropdownVisibleTimeout);
+      dropdownVisibleTimeout = null;
+    }
   } else {
     positionDropdownWindow();
     dropdownWindow.show();
     dropdownWindow.focus();
+    
+    // Set up a watcher to close the dropdown if focus moves away
+    if (dropdownVisibleTimeout) {
+      clearTimeout(dropdownVisibleTimeout);
+    }
+    
+    // Monitor focus every 100ms while dropdown is visible
+    dropdownVisibleTimeout = setInterval(() => {
+      if (dropdownWindow && dropdownWindow.isVisible() && !dropdownWindow.isFocused()) {
+        dropdownWindow.hide();
+        if (dropdownVisibleTimeout) {
+          clearInterval(dropdownVisibleTimeout);
+          dropdownVisibleTimeout = null;
+        }
+      }
+    }, 100);
   }
 }
 
@@ -346,6 +381,9 @@ app.on('window-all-closed', (e) => {
 app.on('before-quit', () => {
   if (updateInterval) {
     clearInterval(updateInterval);
+  }
+  if (dropdownVisibleTimeout) {
+    clearInterval(dropdownVisibleTimeout);
   }
 });
 
