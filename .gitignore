@@ -2,7 +2,6 @@
 node_modules/
 
 # Docs
-INSTRUCTIONS.md
 
 # Build output
 dist/
