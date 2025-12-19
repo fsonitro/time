@@ -57,11 +57,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4px 10px;
+  padding: 3px 9px;
   margin: 1px 0;
   border-radius: 5px;
+  border: 1px solid transparent;
   cursor: default;
-  transition: background-color 0.08s ease;
+  transition: background-color 0.08s ease, border-color 0.08s ease;
   color: #ffffff;
 }
 
@@ -70,11 +71,23 @@ body {
 }
 
 .location-item.active {
-  background: transparent;
+  background: rgba(37, 89, 209, 0.15);
+  border-color: rgba(37, 89, 209, 0.4);
+}
+
+.location-item.active .location-name {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.location-item.active .location-time {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
 }
 
 .location-item.active:hover {
   background: #2559d1;
+  border-color: transparent;
 }
 
 .location-left {
@@ -146,6 +159,22 @@ body {
 
 .timezone-offset {
   display: none;
+}
+
+.checkmark {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2559d1;
+  margin-left: 4px;
+  flex-shrink: 0;
+}
+
+.location-item.active .checkmark {
+  color: #5e9aff;
+}
+
+.location-item:hover .checkmark {
+  color: #ffffff;
 }
 
 /* Divider */
@@ -221,7 +250,30 @@ body.dark-mode .location-item:hover {
 }
 
 body.dark-mode .location-item.active {
-  background: transparent;
+  background: rgba(37, 89, 209, 0.15);
+  border-color: rgba(37, 89, 209, 0.4);
+}
+
+body.dark-mode .location-item.active .location-name {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+body.dark-mode .location-item.active .location-time {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+body.dark-mode .location-item.active:hover {
+  border-color: transparent;
+}
+
+body.dark-mode .checkmark {
+  color: #5e9aff;
+}
+
+body.dark-mode .location-item:hover .checkmark {
+  color: #ffffff;
 }
 
 body.dark-mode .location-name {

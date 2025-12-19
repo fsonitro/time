@@ -85,11 +85,11 @@ function createLocationItem(location, isFavourite) {
         <span class="location-name">${location.label}</span>
         ${date ? `<span class="location-date">${date}</span>` : ''}
       </div>
-      ${isMenuBarItem ? '<span class="menu-bar-indicator">● Menu Bar</span>' : ''}
     </div>
     <div class="location-right">
       <span class="location-time">${time}</span>
       <span class="timezone-offset">${getTimezoneOffset(location.timezone)}</span>
+      ${isMenuBarItem ? '<span class="checkmark">✓</span>' : ''}
     </div>
   `;
   
