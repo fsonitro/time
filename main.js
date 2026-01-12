@@ -144,16 +144,18 @@ function getTimeForTimezone(timezone, preferences) {
     timeOptions.second = '2-digit';
   }
 
-  const time = new Intl.DateTimeFormat('en-GB', timeOptions).format(now);
+  const time = new Intl.DateTimeFormat('en-US', timeOptions).format(now);
   
   if (preferences.showDate) {
-    const dateOptions = {
-      timeZone: timezone,
-      weekday: 'short',
-      day: 'numeric',
-      month: 'short'
-    };
-    const date = new Intl.DateTimeFormat('en-GB', dateOptions).format(now).replace(',', '');
+    const weekdayOptions = { timeZone: timezone, weekday: 'short' };
+    const dayOptions = { timeZone: timezone, day: 'numeric' };
+    const monthOptions = { timeZone: timezone, month: 'short' };
+    
+    const weekday = new Intl.DateTimeFormat('en-US', weekdayOptions).format(now);
+    const day = new Intl.DateTimeFormat('en-US', dayOptions).format(now);
+    const month = new Intl.DateTimeFormat('en-US', monthOptions).format(now);
+    
+    const date = `${weekday} ${day} ${month}`;
     return { time, date };
   }
   

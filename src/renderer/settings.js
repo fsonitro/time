@@ -316,7 +316,7 @@ function renderTimezoneList(filter = '') {
 
 function getCurrentTimeForTimezone(timezone) {
   try {
-    return new Intl.DateTimeFormat('en-GB', {
+    return new Intl.DateTimeFormat('en-US', {
       timeZone: timezone,
       hour: '2-digit',
       minute: '2-digit',
